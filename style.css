@@ -69,7 +69,8 @@ button:active {
 }
 
 .operation {
-  color:hsla(0, 0%, 0%, 0.6)
+  color:hsla(0, 0%, 0%, 0.6);
+  text-align: center;
 }
 
 @media only screen and (max-width: 545px) {
