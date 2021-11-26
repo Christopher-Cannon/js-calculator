@@ -122,23 +122,26 @@ for (const button of buttons) {
         c.point();
         break;
       case "divide":
-        c.storeCurrentNumber();
+        if (!c.lastStoredWasNumber() || c.expressionIsEmpty()) c.storeCurrentNumber();
         c.updateCurrentOperator("/");
         break;
       case "multiply":
-        c.storeCurrentNumber();
+        if (!c.lastStoredWasNumber() || c.expressionIsEmpty()) c.storeCurrentNumber();
         c.updateCurrentOperator("*");
         break;
       case "subtract":
-        c.storeCurrentNumber();
+        if (!c.lastStoredWasNumber() || c.expressionIsEmpty()) c.storeCurrentNumber();
         c.updateCurrentOperator("-");
         break;
       case "add":
-        c.storeCurrentNumber();
+        if (!c.lastStoredWasNumber() || c.expressionIsEmpty()) c.storeCurrentNumber();
         c.updateCurrentOperator("+");
         break;
       case "equals":
+        // If equals is clicked after clicking an operator
+        if (c.getCurrentNumber() === "0") c.storeCurrentOperator();
         c.storeCurrentNumber();
+        console.log(c.getExpression());
         c.clearExpression();
 
         console.log("EVALUATE EXPRESSION, CLEAR EXPRESSION, OUTPUT TOTAL");
